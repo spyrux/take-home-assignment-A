@@ -40,7 +40,7 @@ Some helpful links:
     - Use TypeScript / React or other framework to build a single-page web application.
     - Implement a table view to display data that can be queried (for example below)
         
-        ![Screenshot 2025-01-06 at 2.52.59 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_2.52.59_PM.png)
+        ![table-view.png](./assets/table-view.png)
         
         - the key here is to implement a view that contains
             - **Question Column**
@@ -54,7 +54,7 @@ Some helpful links:
         - the table view is fetched from the form-data endpoint
     - User should be able to add a new query using the “Create Query” button which opens a modal like below:
         
-        ![Screenshot 2025-01-06 at 2.53.16 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_2.53.16_PM.png)
+        ![create-query.png](./assets/create-query.png)
         
         - User should be able to edit the description textbox and submit the form
         - This data should then be saved in the backend
@@ -64,9 +64,7 @@ Some helpful links:
                 - form data id
     - If the User is viewing a query that already exists and has a status “OPEN”
         
-        ![Screenshot 2025-01-06 at 3.10.31 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_3.10.31_PM.png)
-        
-        ![Screenshot 2025-01-06 at 3.11.28 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_3.11.28_PM.png)
+        ![open-query.png](./assets/open-query.png)
         
         - User should view something similar to this indicating that the query status is open
         - User should see what the description of the query is
@@ -74,9 +72,7 @@ Some helpful links:
             - when “resolve” button is clicked the api should send a request to the backend to update the query status to “RESOLVED”
     - User should be able to view a “resolved” query
         
-        ![Screenshot 2025-01-06 at 3.09.56 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_3.09.56_PM.png)
-        
-        ![Screenshot 2025-01-06 at 3.11.28 PM.png](Take%20Home%20Assignment%20A%20(2025)%2017304b1ed81e80e48137ed834d35b3a2/Screenshot_2025-01-06_at_3.11.28_PM%201.png)
+        ![resolved-query.png](./assets/resolved-query.png)
         
         - should clearly indicate that the query is resolved
         - should clearly display the description text of the query
