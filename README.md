@@ -1,6 +1,7 @@
 # take-home-assignment-A
 
 ## Getting Started
+- copy the .env.example file into a .env file
 - `docker-compose build`
 - `docker-compose up`
 - `npm run migrate`
@@ -124,11 +125,20 @@ Some helpful links:
         - `formData`: relational field to a formData
         - `formDataId`: the relational foreign key id of the formData
 
-## Features
-* Persistense for `Form Data` and `Queries` entities
+### Guidelines
 
-* List all form data include any queries
+- **Tech Stack**: You are free to choose any technologies or libraries you prefer, but please stick to modern web development practices.
+- **Code Quality**: Please ensure your code is clean, well-organized, and well-documented. Add comments where necessary to explain key decisions.
+- **Time Management**: This is intended to be a 4+ hour assignment. Focus on getting the basic functionality working first, and add optional features if you have time.
+- **(OPTIONAL) API Documentation**: Provide basic API documentation (e.g., using Swagger or in README.md).
+- **(OPTIONAL) Deployment**: If possible, deploy your application to a service like Heroku, Vercel, or Netlify, and share the live URL with us.
 
-* Create a new query and associate with a form data
-* Update an existing query
+### Submission Instructions
 
+- Share a GitHub repository with your code and provide instructions for how to run the project locally.
+- (OPTIONAL) If you deploy the application, include the live link in the repository’s README.
+- Ensure that your submission includes clear documentation on how to set up and run the backend and frontend.
+
+---
+
+We hope you have fun with the assignment and we look forward to hearing from you!
