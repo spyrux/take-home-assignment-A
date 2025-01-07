@@ -6,6 +6,11 @@
 - `docker-compose up`
 - `npm run migrate`
 - `npm run seed`
+- if you view your database, you should be able to see a populated form data table
+- running the following in your terminal will perform a GET request to fetch the form data
+```bash
+curl --location 'http://127.0.0.1:8080/form-data' --header 'Content-Type: application/json'
+```
 
 ## Introduction
 The purpose of this project is to evaluate your full stack web development skills with an example project that closely resembles your day to day tasks at Vial. 
