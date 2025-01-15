@@ -1,6 +1,7 @@
 # take-home-assignment-A
 
 ## Getting Started
+### Backend Setup
 - copy the .env.example file into a .env file
 - `docker-compose build`
 - `docker-compose up`
@@ -11,6 +12,12 @@
 ```bash
 curl --location 'http://127.0.0.1:8080/form-data' --header 'Content-Type: application/json'
 ```
+### Frontend Setup
+
+- `cd take-home-frontend`
+- `npm install`
+- `npm run dev`
+- after these steps your development server will start on your localhost (e.g http://localhost:5173)
 
 ## Introduction
 The purpose of this project is to evaluate your full stack web development skills with an example project that closely resembles your day to day tasks at Vial. 
@@ -116,6 +123,101 @@ Some helpful links:
 - **(OPTIONAL) API Documentation**: Provide basic API documentation (e.g., using Swagger or in README.md).
 - **(OPTIONAL) Deployment**: If possible, deploy your application to a service like Heroku, Vercel, or Netlify, and share the live URL with us.
 
+
+### API Routes Documentation
+
+This document outlines the available endpoints for managing queries in the `queryRoutes` and `formDataRoutes` module. These endpoints handle CRUD operations using Fastify and Prisma.
+
+### Endpoints
+#### FormData Endpoints
+---
+#### 1. GET `/form-data`
+Retrieve all form data with associated queries.
+
+- **Method**: `GET`
+- **Description**: Fetches all form data entries along with their related queries.
+- **Response**:
+  - **200 OK**:
+    ```json
+    {
+      "total": 5,
+      "formData": [
+        {
+          "id": "123",
+          "name": "Form A",
+          "createdAt": "2025-01-15T04:29:48.689Z",
+          "updatedAt": "2025-01-15T04:29:48.689Z",
+          "query": [
+            {
+              "id": "456",
+              "title": "Query 1",
+              "description": "Description of query",
+              "status": "OPEN"
+            }
+          ]
+        }
+      ]
+    }
+    ```
+- **Error Handling**:
+  - **Error**: 
+    - Code: `400 Bad Request`
+    - Message: `"failed to fetch form data"`
+  - All errors are logged with the component name `formDataRoutes` for easier debugging.
+
+#### Query Endpoints
+---
+#### 1. GET `/query`
+Retrieve all queries.
+
+- **Response:**
+  - `200 OK`: Returns the total number of queries and their details.
+    ```json
+    {
+      "total": 3,
+      "query": [
+        {
+          "id": "123",
+          "title": "Sample Query",
+          "description": "Description of the query",
+          "status": "OPEN",
+          "formDataId": "abc"
+        }
+      ]
+    }
+    ```
+  - **Error Handling:** If retrieval fails, returns a `500 Internal Server Error` with the message `"failed to fetch query"`.
+
+---
+
+#### 2. POST `/query`
+Create a new query.
+
+- **Request Body:**
+  ```json
+  {
+    "title": "New Query Title",
+    "description": "Details about the query",
+    "formDataId": "form123"
+  }
+---
+
+#### 3. PUT `/query/{queryId}`
+Update the status of an existing query.
+
+- **Request Body:**
+  ```json
+  {
+    "status": "RESOLVED"
+  }
+---
+
+#### 4. DELETE `/query/{queryId}`
+Delete an existing query.
+
+
+
+
 ### Submission Instructions
 
 - Share a GitHub repository with your code and provide instructions for how to run the project locally.
@@ -125,3 +227,5 @@ Some helpful links:
 ---
 
 We hope you have fun with the assignment and we look forward to hearing from you!
+
+
