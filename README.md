@@ -216,7 +216,9 @@ Update the status of an existing query.
 Delete an existing query.
 
 
+### Demo
 
+[![Short Demo](https://img.youtube.com/vi/ipCZac3Ggrs/0.jpg)](https://www.youtube.com/watch?v=ipCZac3Ggrs)
 
 ### Submission Instructions
 
