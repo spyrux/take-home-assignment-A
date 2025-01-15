@@ -69,9 +69,10 @@ function App() {
                         title={item.question}
                         description={item.query?.description}
                         status={item.query?.status}
-                        onSubmit={function (): void {
-                          throw new Error("Function not implemented.");
-                        }}
+                        createdAt={item.query?.createdAt}
+                        updatedAt={item.query?.updatedAt}
+                        queryId={item.query?.id}
+                        refetch={refetch}
                       />
                     ) : (
                       <CreateQueryModal

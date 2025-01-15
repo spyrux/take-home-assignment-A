@@ -18,31 +18,89 @@ import {
 } from "@/components/ui/tooltip";
 import { Check, CircleHelp } from "lucide-react";
 import { useState } from "react";
-// export enum QueryStatus {
-//   OPEN = "OPEN",
-//   RESOLVED = "RESOLVED",
-// }
+import axios from "./http-common";
+import { useMutation } from "react-query";
 
-interface QueryModalProps {
+interface ViewQueryModalProps {
   title: string;
   description: string;
   status: string;
-  onSubmit: () => void;
-  triggerText?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  queryId: string;
+  refetch: () => void;
 }
+
+const putQuery = async (
+    description: string,
+    queryId: string
+  ) => {
+    const body = {
+      status: "RESOLVED",
+      description: description,
+    };
+    const response = await axios.put(`/query/${queryId}`, body);
+    return response.data;
+  };
+
+const deleteQuery = async (
+    queryId: string
+  ) => {
+    const response = await axios.delete(`/query/${queryId}`);
+    return response.data;
+  };
 
 export function ViewQueryModal({
   title,
   description,
+  createdAt,
+  updatedAt,
   status,
-  onSubmit,
-  triggerText,
-}: QueryModalProps) {
+  queryId,
+  refetch,
+}: ViewQueryModalProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleDialogOpenChange = (open: boolean) => {
     setIsDialogOpen(open);
   };
+
+  const { mutate: mutateUpdate } = useMutation(
+    () => putQuery(description, queryId),
+    {
+      onSuccess: () => {
+        // Refetch the table data after the PUT request is successful
+        refetch();
+      },
+      onError: (error) => {
+        console.error("Error submitting query:", error);
+      },
+    }
+  );
+
+  const handleResolve = async () => {
+    await mutateUpdate(); 
+    setIsDialogOpen(false);
+  };
+
+  const { mutate: mutateDelete } = useMutation(
+    () => deleteQuery( queryId),
+    {
+      onSuccess: () => {
+        // Refetch the table data after the DELETE request is successful
+        refetch();
+      },
+      onError: (error) => {
+        console.error("Error submitting query:", error);
+      },
+    }
+  );
+
+  const handleDelete = async () => {
+    await mutateDelete(); 
+    setIsDialogOpen(false);
+  };
+
   return (
     <TooltipProvider>
       <Tooltip>
@@ -68,19 +126,32 @@ export function ViewQueryModal({
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
-                Name
+                Status
               </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+              <p className="flex w-36">{status}{status === "OPEN" ? <CircleHelp className="h-6 w-6 ml-2" color="red"  /> : <Check className="h-6 w-6 ml-2" color="green" />}</p>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="username" className="text-right">
-                Username
+                Description
               </Label>
-              <Input id="username" value="@peduarte" className="col-span-3" />
+              <p>{description}</p>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Created At
+              </Label>
+              <p>{createdAt.toLocaleString()}</p>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Updated At
+              </Label>
+              <p>{updatedAt.toLocaleString()}</p>
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            {status==="OPEN" && (<Button type="submit" onClick={handleResolve}>Resolve</Button>)}
+            <Button type="submit"onClick={handleDelete}>Delete</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

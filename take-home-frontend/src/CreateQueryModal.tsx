@@ -21,7 +21,7 @@ import { useState } from "react";
 import axios from "./http-common";
 import { useMutation } from "react-query";
 
-interface QueryModalProps {
+interface CreateQueryModalProps {
   title: string;
   description: string;
   formDataId: string;
@@ -32,7 +32,7 @@ export function CreateQueryModal({
   title,
   formDataId,
   refetch,
-}: QueryModalProps) {
+}: CreateQueryModalProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [queryText, setQueryText] = useState("");
 
