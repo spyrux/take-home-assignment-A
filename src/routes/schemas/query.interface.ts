@@ -7,7 +7,6 @@ export interface IQuery {
     createdAt: Date
     updatedAt: Date
     status: 'OPEN' | 'RESOLVED'
-    formData?: IFormData
     formDataId: string
   }
   
