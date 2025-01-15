@@ -32,12 +32,10 @@ interface ViewQueryModalProps {
 }
 
 const putQuery = async (
-    description: string,
     queryId: string
   ) => {
     const body = {
       status: "RESOLVED",
-      description: description,
     };
     const response = await axios.put(`/query/${queryId}`, body);
     return response.data;
@@ -66,7 +64,7 @@ export function ViewQueryModal({
   };
 
   const { mutate: mutateUpdate } = useMutation(
-    () => putQuery(description, queryId),
+    () => putQuery(queryId),
     {
       onSuccess: () => {
         // Refetch the table data after the PUT request is successful

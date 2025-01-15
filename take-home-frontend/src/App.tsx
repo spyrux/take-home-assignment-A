@@ -41,7 +41,7 @@ function App() {
               <TableRow>
                 <TableHead>Question</TableHead>
                 <TableHead>Answer</TableHead>
-                <TableHead>Query</TableHead>
+                <TableHead className="text-center">Query</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

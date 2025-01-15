@@ -48,7 +48,6 @@ async function queryRoutes(app: FastifyInstance) {
         where: { id },
         data: { 
           status,
-          description,
         }
       })
       return query
