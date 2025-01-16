@@ -1,13 +1,9 @@
-import { useState } from "react";
 import { useQuery } from "react-query";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "./http-common";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -23,7 +19,6 @@ const fetchFormData = async () => {
 };
 
 function App() {
-  const [count, setCount] = useState(0);
   const { data, isLoading, isError, refetch } = useQuery(
     "formData",
     fetchFormData
