@@ -53,7 +53,7 @@ The backend is built with Prisma ORM, Fastify, Node, and PostgreSQL. The fronten
 - [TailwindCSS](https://tailwindcss.com/)
 - [React Query](https://tanstack.com/query/v5/docs)
 
-### API Routes Documentation
+## API Routes Documentation
 
 This document outlines the available endpoints for managing queries in the `queryRoutes` and `formDataRoutes` module. These endpoints handle CRUD operations using Fastify and Prisma.
 
@@ -158,7 +158,7 @@ Update the status of an existing query.
 
 Delete an existing query.
 
-### Future Considerations
+## Future Considerations
 
 - Data can be paginated on both frontend and backend to limit request sizes and prevent the clients from pulling the entire FormData database each time.
 - Authentication system for control over data.
