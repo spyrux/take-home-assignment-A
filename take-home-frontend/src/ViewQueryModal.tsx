@@ -28,6 +28,10 @@ interface ViewQueryModalProps {
   refetch: () => void
 }
 
+const dateToString = (date: Date) => {
+  const dateObj = new Date(date)
+  return dateObj.toLocaleString()
+}
 const putQuery = async (queryId: string) => {
   const body = {
     status: 'RESOLVED',
@@ -132,13 +136,13 @@ export function ViewQueryModal({
               <Label htmlFor="name" className="text-right">
                 Created At
               </Label>
-              <p>{createdAt.toLocaleString()}</p>
+              <p className="w-64">{dateToString(createdAt)}</p>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
                 Updated At
               </Label>
-              <p>{updatedAt.toLocaleString()}</p>
+              <p className="w-64">{dateToString(updatedAt)}</p>
             </div>
           </div>
           <DialogFooter>
@@ -147,7 +151,7 @@ export function ViewQueryModal({
                 Resolve
               </Button>
             )}
-            <Button type="submit" onClick={handleDelete}>
+            <Button type="submit" className="bg-red-500" onClick={handleDelete}>
               Delete
             </Button>
           </DialogFooter>
